@@ -115,7 +115,7 @@ module CamaleonCms::Admin::MenusHelper
     menus = _get_url_current
     menus.each do |menu|
       res << "<li data-key='#{menu[:key]}' class='#{"treeview" if menu.has_key?(:items)} #{'active' if is_active_menu(menu[:key])}' #{menu[:datas]}>
-        <a href='#{menu[:url]}'><i class='fa fa-#{menu[:icon]}'></i> <span class=''>#{menu[:title]}</span> #{'<i class="fa fa-angle-left pull-right"></i>' if menu.has_key?(:items) }</a>
+        <a href='#{menu[:url]}'><i class='fa fa-#{menu[:icon]}'></i> <span class=''>#{menu[:title]}</span> #{'<i class="fa fa-angle-up pull-right"></i>' if menu.has_key?(:items) }</a>
         #{_admin_menu_draw(menu[:items]) if menu.has_key?(:items)}
       </li>"
     end
@@ -171,7 +171,7 @@ module CamaleonCms::Admin::MenusHelper
     res  << "<ul class='treeview-menu'>"
     items.each_with_index do |item, index|
       res  << "<li class='#{"xn-openable" if item.has_key?(:items)} item_#{index + 1} #{'active' if is_active_menu(item[:key])}' #{item[:datas]}>
-                <a href='#{item[:url]}'><i class='fa fa-#{item[:icon]}'></i> #{item[:title]} #{'<i class="fa fa-angle-left pull-right"></i>' if item.has_key?(:items) }</a>
+                <a href='#{item[:url]}'><i class='fa fa-#{item[:icon]}'></i> #{item[:title]} #{'<i class="fa fa-angle-up pull-right"></i>' if item.has_key?(:items) }</a>
                 #{_admin_menu_draw(item[:items]) if item.has_key?(:items)}
               </li>"
     end

@@ -535,7 +535,8 @@ a:focus {
   padding: 10px 25px 10px 15px;
   font-size: 12px;
 }
-.sidebar-menu li > a > .fa-angle-left {
+.sidebar-menu li > a > .fa-angle-left,
+.sidebar-menu li > a > .fa-angle-up {
   width: auto;
   height: auto;
   padding: 0;
@@ -547,6 +548,12 @@ a:focus {
   -ms-transform: rotate(-90deg);
   -o-transform: rotate(-90deg);
   transform: rotate(-90deg);
+}
+.sidebar-menu li.active > a > .fa-angle-up {
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 .sidebar-menu li.active > .treeview-menu {
   display: block;
@@ -575,6 +582,7 @@ a:focus {
   width: 20px;
 }
 .sidebar-menu .treeview-menu > li > a > .fa-angle-left,
+.sidebar-menu .treeview-menu > li > a > .fa-angle-up,
 .sidebar-menu .treeview-menu > li > a > .fa-angle-down {
   width: auto;
 }
