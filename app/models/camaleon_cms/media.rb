@@ -36,14 +36,19 @@ class CamaleonCms::Media < ActiveRecord::Base
   end
 
   private
+
   # recover folder or file format
   def create_parent_folders
     coll = is_public ? site.public_media : site.private_media
-    _p = []
+    p = []
     folder_path.split('/').each do |f_name|
-      _path = ('/'+_p.join('/')).cama_fix_media_key
-      coll.only_folder.where(name: f_name, folder_path: _path).first_or_create() if "#{_path}/#{f_name}".cama_fix_media_key != '/'
-      _p.push(f_name)
+      path = ('/' + p.join('/')).cama_fix_media_key
+      if "#{path}/#{f_name}".cama_fix_media_key != '/'
+        unless coll.only_folder.where(name: f_name, folder_path: path).exists?
+          coll.only_folder.create(name: f_name, folder_path: path)
+        end
+      end
+      p.push(f_name)
     end
   end
 
