@@ -67,6 +67,7 @@ class CamaleonCms::PostDefault < ActiveRecord::Base
   # do all before actions to save the content
   def before_saved
     self.title = "Untitled" unless self.title.present?
+    self.content = content.to_s.squish
     self.content_filtered = content.to_s.include?('<!--:-->') ? content.translations.inject({}) { |h, (key, value)| h[key] = value.squish.strip_tags; h }.to_translate : content.to_s.squish.strip_tags
   end
 
