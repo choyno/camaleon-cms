@@ -190,7 +190,8 @@ class CamaleonCms::PostDecorator < CamaleonCms::ApplicationDecorator
   def can_visit?
     r = {flag: true, post: object}
     h.hooks_run("post_can_visit", r)
-    r[:flag] && (object.status == 'published' || object.status == 'draft_child')
+   # r[:flag] && (object.status == 'published' || object.status == 'draft_child')
+    r[:flag] && (object.status == 'published')
   end
 
   # add_post_type: true/false to include post type link
